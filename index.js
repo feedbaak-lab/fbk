@@ -1,17 +1,22 @@
-// Load environment variables from a .env file
-require('dotenv').config();
-
 // Import required libraries
 const express = require('express');
 const mongoose = require('mongoose');
+const { ApplicantSchema } = require('./models/applicant'); // Import the applicant schema
 
-// Import the Mongoose schema for the applicant
-const { ApplicantSchema } = require('./models/applicant');
+// Initialize Express application
+const app = express();
+
+// Set the port to listen on, defaulting to 3000 if not provided in environment variables
+const PORT = process.env.PORT || 3000;
+
+// Disable strict mode for MongoDB queries
+mongoose.set('strictQuery', false);
+
+// Use middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
 
 // Create a Mongoose model for the applicant schema
 const Applicant = mongoose.model('Applicant', ApplicantSchema);
-// Initialize Express application
-const app = express();
 
 // Connect to MongoDB database
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -72,7 +77,6 @@ app.post('/add-applicant', async (req, res) => {
 });
 
 // Start the Express server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
