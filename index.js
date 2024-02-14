@@ -8,10 +8,8 @@ const mongoose = require('mongoose');
 // Import the Mongoose schema for the applicant
 const { ApplicantSchema } = require('./models/applicant');
 
-
 // Create a Mongoose model for the applicant schema
-//const Applicant = mongoose.model('Applicant', ApplicantSchema);
-
+const Applicant = mongoose.model('Applicant', ApplicantSchema);
 // Initialize Express application
 const app = express();
 
