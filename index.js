@@ -12,7 +12,7 @@ const { ApplicantSchema } = require('./models/applicant');
 const { categoryEnum, locationEnum } = require('./enums');
 
 // Create a Mongoose model for the applicant schema
-const Applicant = mongoose.model('Applicant', ApplicantSchema);
+//const Applicant = mongoose.model('Applicant', ApplicantSchema);
 
 // Initialize Express application
 const app = express();
