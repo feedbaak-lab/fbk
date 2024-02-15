@@ -76,17 +76,16 @@ app.post('/add-applicant', async (req, res) => {
             Location: ${req.body.location}
         `;
 
-      // Create a transporter using SMTP
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com', // Gmail Mail SMTP hostname
-    port: 465, // gmail Mail SMTP port (465 for SSL)
-    secure: true, // Use SSL/TLS
-    auth: {
-        user: 'royrajputpm@gmail.com', // Your gmail Mail email address
-        pass: 'No1spaces!?' // Your gmail Mail password
-    }
-});
-
+        // Create a transporter using SMTP
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com', // Gmail SMTP hostname
+            port: 465, // Gmail SMTP port (465 for SSL)
+            secure: true, // Use SSL/TLS
+            auth: {
+                user: 'royrajputpm@gmail.com', // Your Gmail email address
+                pass: 'No1spaces!?' // Your Gmail password
+            }
+        });
 
         // Define email options
         const mailOptions = {
@@ -96,18 +95,16 @@ const transporter = nodemailer.createTransport({
             text: emailBody
         };
 
+        // Send email
+        await transporter.sendMail(mailOptions);
 
-// Send email
-await transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
+        console.log('Email sent successfully');
+        res.send('Applicant added successfully. Email sent.');
+    } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).send('Error sending email');
-    } else {
-        console.log('Email sent:', info.response);
-        res.send('Applicant added successfully. Email sent.');
     }
 });
-
 
 // Start the Express server
 app.listen(PORT, () => {
