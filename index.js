@@ -91,7 +91,7 @@ const transporter = nodemailer.createTransport({
         // Define email options
         const mailOptions = {
             from: req.body.email, // Use the user's email address as the sender
-            to: 'info@feedbaak.com', // Set the recipient email address
+            to: 'royrajputpm@gmail.com', // Set the recipient email address
             subject: 'New Applicant Submission',
             text: emailBody
         };
