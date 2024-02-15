@@ -78,12 +78,12 @@ app.post('/add-applicant', async (req, res) => {
 
       // Create a transporter using SMTP
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com', // Zoho Mail SMTP hostname
-    port: 465, // Zoho Mail SMTP port (465 for SSL)
+    host: 'smtp.gmail.com', // Gmail Mail SMTP hostname
+    port: 465, // gmail Mail SMTP port (465 for SSL)
     secure: true, // Use SSL/TLS
     auth: {
-        user: 'royrajputpm@gmail.com', // Your Zoho Mail email address
-        pass: 'No1spaces!?' // Your Zoho Mail password
+        user: 'royrajputpm@gmail.com', // Your gmail Mail email address
+        pass: 'No1spaces!?' // Your gmail Mail password
     }
 });
 
