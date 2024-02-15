@@ -66,7 +66,7 @@ app.post('/add-applicant', async (req, res) => {
             email: req.body.email,
             phone: req.body.phone,
             videoURL: req.body.videoURL,
-            interestedCategories: req.body.interestedCategories.split(',').map(category => category.trim()),
+            interestedCategories: req.body.interestedCategories,
             location: req.body.location
         });
 
