@@ -96,15 +96,18 @@ const transporter = nodemailer.createTransport({
             text: emailBody
         };
 
-        // Send email
-        await transporter.sendMail(mailOptions);
 
+// Send email
+await transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('Error sending email');
+    } else {
+        console.log('Email sent:', info.response);
         res.send('Applicant added successfully. Email sent.');
-    } catch (error) {
-        console.error('Error adding applicant:', error);
-        res.status(500).send('Error adding applicant');
     }
 });
+
 
 // Start the Express server
 app.listen(PORT, () => {
