@@ -42,9 +42,10 @@ app.get('/', (req, res) => {
             <label for="videoURL">Video URL:</label>
             <input type="text" id="videoURL" name="videoURL" required><br><br>
             <label for="interestedCategories">Interested Categories:</label>
-            <select id="location" name="location" required>
-            <option value="Storefront">Storefront</option>
-            <option value="Website">Website</option>
+            <select id="interestedCategories" name="interestedCategories" required>
+                <option value="Category1">Category 1</option>
+                <option value="Category2">Category 2</option>
+                <option value="Category3">Category 3</option>
             </select><br><br>
             <label for="location">Location:</label>
             <select id="location" name="location" required>
@@ -83,4 +84,3 @@ app.post('/add-applicant', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
