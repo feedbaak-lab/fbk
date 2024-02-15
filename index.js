@@ -1,112 +1,64 @@
-// Import required libraries
 const express = require('express');
-const nodemailer = require('nodemailer'); // Import nodemailer library
+const nodemailer = require('nodemailer');
 
-// Initialize Express application
 const app = express();
-
-// Set the port to listen on, defaulting to 3000 if not provided in environment variables
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 
-// Route handler for serving the HTML form
-app.get('/', (req, res) => {
-    res.send(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>New Applicant Form</title>
-        </head>
-        <body>
-            <h1>New Applicant</h1>
-            <form action="/add-applicant" method="post">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required><br><br>
-                
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required><br><br>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
-                
-                <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" required><br><br>
-                
-                <label for="videoURL">Video URL:</label>
-                <input type="text" id="videoURL" name="videoURL" required><br><br>
-                
-                <label for="interestedCategories">Interested Categories:</label>
-                <input type="text" id="interestedCategories" name="interestedCategories" required><br><br>
-                
-                <label for="location">Location:</label>
-                <select id="location" name="location" required>
-                    <option value="US">US</option>
-                    <option value="Non-US">Non-US</option>
-                </select><br><br>
-                
-                <button type="submit">Submit</button>
-            </form>
+// HTML form
+const formHtml = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Email Submission Form</title>
+    </head>
+    <body>
+        <h1>Email Submission Form</h1>
+        <form action="/send-email" method="post">
+            <label for="from">From:</label>
+            <input type="email" id="from" name="from" required><br><br>
 
-            <script>
-                // Show confirmation message when the form is submitted
-                document.querySelector('form').addEventListener('submit', function() {
-                    alert('Thank you for submitting the form!');
-                });
-            </script>
-        </body>
-        </html>
-    `);
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+    </html>
+`;
+
+// Serve the HTML form
+app.get('/', (req, res) => {
+    res.send(formHtml);
 });
 
-// Route handler to add a new applicant and send the data to an email address
-app.post('/add-applicant', async (req, res) => {
+// Handle form submission and send email
+app.post('/send-email', async (req, res) => {
     try {
-        // Create the email body with the form data
-        const emailBody = `
-            First Name: ${req.body.firstName}
-            Last Name: ${req.body.lastName}
-            Email: ${req.body.email}
-            Phone: ${req.body.phone}
-            Video URL: ${req.body.videoURL}
-            Interested Categories: ${req.body.interestedCategories}
-            Location: ${req.body.location}
-        `;
+        const transporter = nodemailer.createTransport();
 
-        // Create a transporter using SMTP
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.zoho.com', // Gmail SMTP hostname
-            port: 465, // Gmail SMTP port (465 for SSL)
-            secure: true, // Use SSL/TLS
-            auth: {
-                user: 'info@feedbaak.com', // Your Gmail email address
-                pass: 'No1spaces!' // Your Gmail password
-            }
-        });
-
-        // Define email options
         const mailOptions = {
-            from: req.body.email, // Use the user's email address as the sender
-            to: 'info@feedbaak.com', // Set the recipient email address
-            subject: 'New Applicant Submission',
-            text: emailBody
+            from: req.body.from,
+            to: 'info@feedbaak.com',
+            subject: req.body.subject,
+            text: req.body.message
         };
 
-        // Send email
         await transporter.sendMail(mailOptions);
-
-        console.log('Email sent successfully');
-        res.send('Applicant added successfully. Email sent.');
+        
+        res.send('Email sent successfully!');
     } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).send('Error sending email');
     }
 });
 
-// Start the Express server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
