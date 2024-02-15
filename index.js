@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
             <title>New Applicant Form</title>
         </head>
         <body>
-            <h1>New Applicant Form</h1>
+            <h1>New Applicant</h1>
             <form action="/add-applicant" method="post">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" required><br><br>
@@ -78,19 +78,19 @@ app.post('/add-applicant', async (req, res) => {
 
         // Create a transporter using SMTP
         const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com', // Gmail SMTP hostname
+            host: 'smtp.zoho.com', // Gmail SMTP hostname
             port: 465, // Gmail SMTP port (465 for SSL)
             secure: true, // Use SSL/TLS
             auth: {
-                user: 'royrajputpm@gmail.com', // Your Gmail email address
-                pass: 'No1spaces!?' // Your Gmail password
+                user: 'info@feedbaak.com', // Your Gmail email address
+                pass: 'No1spaces!' // Your Gmail password
             }
         });
 
         // Define email options
         const mailOptions = {
             from: req.body.email, // Use the user's email address as the sender
-            to: 'royrajputpm@gmail.com', // Set the recipient email address
+            to: 'info@feedbaak.com', // Set the recipient email address
             subject: 'New Applicant Submission',
             text: emailBody
         };
