@@ -42,7 +42,10 @@ app.get('/', (req, res) => {
             <label for="videoURL">Video URL:</label>
             <input type="text" id="videoURL" name="videoURL" required><br><br>
             <label for="interestedCategories">Interested Categories:</label>
-            <input type="text" id="interestedCategories" name="interestedCategories" required><br><br>
+            <select id="location" name="location" required>
+            <option value="Storefront">Storefront</option>
+            <option value="Website">Website</option>
+            </select><br><br>
             <label for="location">Location:</label>
             <select id="location" name="location" required>
                 <option value="US">US</option>
