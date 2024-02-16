@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define the list of possible categories
-const categoryEnum = ['Chatbot','Dropship Website', 'Website', 'Application', 'Video', 'Social Media', 'Tinder Profile'];
+const categoryEnum = ['Chatbot','Dropship Website', 'Website', 'Application', 'Video', 'Social Media', 'Dating Profile'];
 
 // Define the list of possible locations
 const locationEnum = ['US', 'Non-US'];
