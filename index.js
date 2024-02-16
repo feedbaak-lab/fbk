@@ -1,5 +1,9 @@
 // Import required libraries
+require('dotenv').config();
+
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
+
 const mongoose = require('mongoose');
 const { ApplicantSchema } = require('./models/applicant'); // Import the applicant schema
 
@@ -9,12 +13,21 @@ const app = express();
 // Set the port to listen on, defaulting to 3000 if not provided in environment variables
 const PORT = process.env.PORT || 3000;
 
+
 // Disable strict mode for MongoDB queries
 mongoose.set('strictQuery', false);
 
 // Use middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// Static Files
+app.use(express.static('public'));
+
+//Templating Engine
+app.use(expressLayouts);
+app.set('layout', './layouts/main');
+app.set('view engine', 'ejs');
 // Create a Mongoose model for the applicant schema
 const Applicant = mongoose.model('Applicant', ApplicantSchema);
 
@@ -29,36 +42,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 // Route handler for the index page
 app.get('/', (req, res) => {
-    res.send(`
-        <form action="/add-applicant" method="post">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required><br><br>
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required><br><br>
-            <label for="videoURL">Video URL:</label>
-            <input type="text" id="videoURL" name="videoURL" required><br><br>
-            <label for="interestedCategories">Interested Categories:</label>
-            <select id="interestedCategories" name="interestedCategories" required>
-                <option value="Chatbot">Chatbot</option>
-                <option value="Dropship Website">Dropship Website</option>
-                <option value="Website">Website</option>
-                <option value="Application">Application</option>
-                <option value="Video">Video</option>
-                <option value="Social Media">Social Media</option>
-                <option value="Dating Profile">Dating Profile</option>
-            </select><br><br>
-            <label for="location">Location:</label>
-            <select id="location" name="location" required>
-                <option value="US">US</option>
-                <option value="Non-US">Non-US</option>
-            </select><br><br>
-            <button type="submit">Submit</button>
-        </form>
-    `);
+    res.render(`index`);
 });
 
 // Route handler to add a new applicant
