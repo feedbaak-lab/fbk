@@ -43,9 +43,13 @@ app.get('/', (req, res) => {
             <input type="text" id="videoURL" name="videoURL" required><br><br>
             <label for="interestedCategories">Interested Categories:</label>
             <select id="interestedCategories" name="interestedCategories" required>
-                <option value="Category1">Category 1</option>
-                <option value="Category2">Category 2</option>
-                <option value="Category3">Category 3</option>
+                <option value="Chatbot">Chatbot</option>
+                <option value="Dropship Website">Dropship Website</option>
+                <option value="Website">Website</option>
+                <option value="Application">Application</option>
+                <option value="Video">Video</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Dating Profile">Dating Profile</option>
             </select><br><br>
             <label for="location">Location:</label>
             <select id="location" name="location" required>

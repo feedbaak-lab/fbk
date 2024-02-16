@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define the list of possible categories
-const categoryEnum = ['Storefront', 'Service', 'Restaurant', 'Website', 'Application', 'Video', 'Social Media', 'Tinder'];
+const categoryEnum = ['Chatbot','Dropship Website', 'Website', 'Application', 'Video', 'Social Media', 'Tinder Profile'];
 
 // Define the list of possible locations
 const locationEnum = ['US', 'Non-US'];
@@ -13,6 +13,7 @@ const locationEnum = ['US', 'Non-US'];
 // Defining the schema for the job applicants collection
 const ApplicantSchema = new Schema({
     // First name of the applicant, a required string field
+    
     firstName:{
         type: String,
         required: true,
