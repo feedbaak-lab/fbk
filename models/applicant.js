@@ -28,11 +28,6 @@ const ApplicantSchema = new Schema({
         type: String,
         required: true,
     },
-    // Phone number of the applicant, a required string field
-    phone: {
-        type: String,
-        required: true,
-    },
     // Video URL provided by the applicant, a required string field
     videoURL: {
         type: String,

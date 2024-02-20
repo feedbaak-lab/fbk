@@ -53,7 +53,6 @@ app.post('/add-applicant', async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            phone: req.body.phone,
             videoURL: req.body.videoURL,
             interestedCategories: req.body.interestedCategories,
             location: req.body.location
