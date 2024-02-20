@@ -1,29 +1,164 @@
-<h1>Hello Jazmin</h1>
-<form action="/add-applicant" method="post">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required><br><br>
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" required><br><br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
-    <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="phone" required><br><br>
-    <label for="videoURL">Video URL:</label>
-    <input type="text" id="videoURL" name="videoURL" required><br><br>
-    <label for="interestedCategories">Interested Categories:</label>
-    <select id="interestedCategories" name="interestedCategories" required>
-        <option value="Chatbot">Chatbot</option>
-        <option value="Dropship Website">Dropship Website</option>
-        <option value="Website">Website</option>
-        <option value="Application">Application</option>
-        <option value="Video">Video</option>
-        <option value="Social Media">Social Media</option>
-        <option value="Dating Profile">Dating Profile</option>
-    </select><br><br>
-    <label for="location">Location:</label>
-    <select id="location" name="location" required>
-        <option value="US">US</option>
-        <option value="Non-US">Non-US</option>
-    </select><br><br>
-    <button type="submit">Submit</button>
-</form>
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8"> <!-- Character encoding -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Responsive design meta tag -->
+        <title>Feedbaak</title> <!-- Title of the page -->
+        <meta name="description" content="Gravity is a beautiful Bootstrap 4 template for multipurpose landing pages." /> <!-- Description meta tag for SEO -->
+
+        <!--Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"> <!-- Link to Google Fonts -->
+
+        <!--vendors styles-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Font Awesome stylesheet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"> <!-- Slick Carousel stylesheet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"> <!-- Slick Carousel theme stylesheet -->
+
+        <!-- Bootstrap CSS / Color Scheme -->
+        <link rel="stylesheet" href="css/black.css" id="theme-color"> <!-- Custom CSS file -->
+    </head>
+    <body data-spy="scroll" data-target="#gravity-navbar" data-offset="0"> <!-- Body tag with scroll spy -->
+
+        <!--navigation-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top sticky-navigation" id="gravity-navbar">
+            <a class="navbar-brand" href="/">
+                Feedbaak <!-- Brand name -->
+            </a>
+            <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" 
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="menu"></span> <!-- Hamburger menu icon -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Navigation links -->
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#faq">FAQ</a>
+                    </li>
+                </ul>
+                <form class="form-inline">
+                    <a href="#contact" class="btn btn-outline-secondary btn-navbar page-scroll">Get Started</a> <!-- Button to get started -->
+                </form>
+            </div>
+        </nav>
+
+        <!--hero header-->
+        <section class="py-6 py-md-7 bg-primary" id="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 my-md-auto text-center text-md-left pb-5 pb-md-0">
+                        <!-- Heading and subheading -->
+                        <h1 class="display-3 text-white">Goodbye generic feedback.  Hello human insights.</h1>
+                        <p class="lead text-light">Tired of vague feedback that leaves you guessing? Our reviewers provide detailed insights, highlighting what works, what doesn't, and most importantly, why. Gain clarity on user experience, functionality, design, and more to drive meaningful improvements.</p>
+                        <a href="#pricing" class="btn btn-secondary page-scroll">See pricing</a> <!-- Button to see pricing -->
+                    </div>
+                    <div class="col-md-5 ml-auto">
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <!-- Signup form -->
+                                <h4 class="text-center">Get started for free</h4>
+                                <form class="signup-form">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email address">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="interestedCategories" name="interestedCategories">
+                                            <option value="Chatbot">Chatbot</option>
+                                            <option value="Dropship Website">Dropship Website</option>
+                                            <option value="Website">Website</option>
+                                            <option value="Application">Application</option>
+                                            <option value="Video">Video</option>
+                                            <option value="Social Media">Social Media</option>
+                                            <option value="Website">Website</option>
+                                            <option value="Dating Profile">Dating Profile</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="Location" name="Location">
+                                            <option value="US">US</option>
+                                            <option value="Non-US">Non-US</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="videoURL" name="videoURL" placeholder="Video URL">
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-block">Sign up for free</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- features section -->
+        <section class="py-7 bg-light" id="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-8 mx-auto text-center">
+                        <span class="text-muted small-xl text-uppercase">Loved by millions of people</span>
+                        <h2 class="display-4">Everything you need to travel</h2>
+                        <p class="lead">Nam liber tempor cum eleifend option congue nihil imper. 
+                            Nam liber tempor cum soluta nobis.</p>
+                    </div>
+                </div>
+                <!-- Features grid -->
+                <div class="row mt-5">
+                    <div class="col-md-4 col-sm-6 mb-5 text-center">
+                        <!-- Feature item -->
+                        <div class="icon-box inverse">
+                            <div class="icon-box-inner small-xs text-primary">
+                                <span data-feather="star" width="30" height="30"></span> <!-- Icon -->
+                            </div>
+                        </div>
+                        <h4 class="mt-2">Top-rated hotels</h4> <!-- Feature title -->
+                        <p>Nam liber tempor cum eleifend option congue nihil imper. Nam liber tempor cum soluta nobis.</p> <!-- Feature description -->
+                    </div>
+                    <!-- Similar structure for other features -->
+                </div>
+            </div>
+        </section>
+
+        <!--extra features section-->
+        <!-- Similar structure for extra features section -->
+
+        <!-- reviews section -->
+        <!-- Similar structure for reviews section -->
+
+        <!--pricing section-->
+        <!-- Similar structure for pricing section -->
+
+        <!-- faq section -->
+        <!-- Similar structure for FAQ section -->
+
+        <!--footer / contact-->
+        <!-- Footer section -->
+
+        <!--scroll to top-->
+        <!-- Scroll to top button -->
+
+        <!-- theme switcher (FOR DEMO ONLY - REMOVE FROM PRODUCTION)-->
+        <!-- Theme switcher for demo purposes -->
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- Script tags for JavaScript libraries -->
